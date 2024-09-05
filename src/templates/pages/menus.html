@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des menus{% endblock %}
+
+{% block content %}
+    <h2>Liste des menus</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>date_creation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for menu in menus %}
+            <tr>
+                
+                <td>{{ menu.date_creation }}</td>
+                
+                <td>
+                    <a href="{% url 'pages:update_menu' menu.id %}">Modifier</a>
+                    <a href="{% url 'pages:delete_menu' menu.id %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'pages:add_menu' %}" class="btn btn-primary">Ajouter un menu</a>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des plats{% endblock %}
+
+{% block content %}
+    <h2>Liste des plats</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>summary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plat in plats %}
+            <tr>
+                
+                <td>{{ plat.name }}</td>
+                <td>{{ plat.summary }}</td>
+                
+                <td>
+                    <a href="{% url 'plat:update_plat' plat.id %}">Modifier</a>
+                    <a href="{% url 'plat:delete_plat' plat.id %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'plat:add_plat' %}" class="btn btn-primary">Ajouter un plat</a>
+{% endblock %}
